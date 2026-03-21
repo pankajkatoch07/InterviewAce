@@ -97,7 +97,7 @@
 #### **Groq SDK 0.4.2** - AI Service Integration
 - **Why**: Groq provides ultra-fast AI inference (faster than OpenAI for certain models)
 - **What it does**: Sends interview answers to Groq's AI model which analyzes and provides feedback
-- **Model used**: Mixtral-8x7b-32768 (high performance, open-source model)
+- **Model used**: Gemma 7B IT (Google's model, reliable and fast)
 - **Why Groq over alternatives?**: 
   - Faster inference speed = quicker feedback to users
   - Cost-effective
@@ -586,10 +586,10 @@ const getInterviewFeedback = async (question, answer, techStack) => {
   - [points]
   Ideal Answer Summary: [summary]`;
 
-  // 2. Send to Groq API using Mixtral model
+  // 2. Send to Groq API using Gemma model
   const message = await groq.chat.completions.create({
     messages: [{ role: "user", content: prompt }],
-    model: "mixtral-8x7b-32768"
+    model: "gemma-7b-it"
   });
 
   // 3. Extract response
@@ -607,7 +607,7 @@ const getInterviewFeedback = async (question, answer, techStack) => {
 **Why Groq is used**:
 - **Ultra-fast**: Returns responses in seconds
 - **Cost-effective**: Free/cheap API tier
-- **Mixtral model**: Open-source, performs well on technical questions
+- **Gemma 7B model**: Google's model, performs well on technical questions
 - **No manual grading**: Automated feedback instantly
 
 **Error handling**:
@@ -1110,7 +1110,7 @@ Response:
    ↓
 3. Backend calls Groq AI service with carefully crafted prompt
    ├─ Prompt includes: question, answer, evaluation criteria
-   ├─ Model: Mixtral-8x7b-32768 (fast, smart)
+   ├─ Model: Gemma 7B IT (fast, reliable)
    └─ API Key: From environment variable (GROQ_API_KEY)
    ↓
 4. Groq AI responds with structured feedback:
@@ -1143,7 +1143,7 @@ Response:
 **Groq advantages over ChatGPT/Claude**:
 - **Faster**: Returns responses in 2-5 seconds
 - **Cheaper**: Free tier available
-- **Open-source model**: Uses Mixtral, no vendor lock-in
+- **Reliable model**: Uses Gemma 7B, proven performance
 - **Real-time friendly**: Perfect for interactive interviews
 
 ---

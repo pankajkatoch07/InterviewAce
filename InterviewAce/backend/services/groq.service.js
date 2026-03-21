@@ -6,9 +6,14 @@ if (!process.env.GROQ_API_KEY) {
   process.exit(1);
 }
 
+// Get model from environment or use default
+const GROQ_MODEL = process.env.GROQ_MODEL || "llama2-70b-4096";
+
 const groq = new Groq({
   apiKey: process.env.GROQ_API_KEY,
 });
+
+console.log(`Using Groq model: ${GROQ_MODEL}`);
 
 const getInterviewFeedback = async (question, answer, techStack) => {
   try {
@@ -54,7 +59,7 @@ Be constructive, professional, and specific in your feedback. Rate fairly — do
           content: prompt,
         },
       ],
-      model: "mixtral-8x7b-32768",
+      model: GROQ_MODEL,
     });
 
     if (!message || !message.choices || message.choices.length === 0) {

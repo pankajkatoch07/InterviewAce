@@ -1,53 +1,179 @@
 # InterviewAce
 
+**Status**: ✅ Fully Configured & Working
+
 An AI-powered interview prep platform helping engineers practice technical interviews with instant, intelligent feedback. Supports multiple tech stacks, tracks progress, and provides detailed performance metrics.
 
-##  Features
+## ✨ Features
 
-- **AI-Powered Feedback**: Get instant, detailed feedback on your interview answers using Groq AI
-- **Multiple Tech Stacks**: Practice questions for 6 different tech stacks (MERN, Python, Java, etc.)
-- **Progress Tracking**: Store and review all past interview sessions with individual scores
-- **Real-Time Analysis**: Receive structured feedback including strengths and areas to improve
-- **Performance Metrics**: Track your improvement over time with detailed performance analytics
-- **Persistent Sessions**: Review previous interviews and track your growth
+- **AI-Powered Feedback** - Get instant, detailed feedback on your interview answers using Groq AI
+- **Multiple Tech Stacks** - Practice questions for 6 different tech stacks (MERN, Node.js, Java, React, JavaScript, Python)
+- **Real-Time Analysis** - Receive structured feedback including technical expertise, communication skills, strengths, and areas to improve
+- **Progress Tracking** - Store and review all past interview sessions with individual scores
+- **Performance Metrics** - Track your improvement over time with detailed performance analytics
 
-## Tech Stack
+## 🛠 Tech Stack
 
 ### Frontend
 - **React 19.2.4** - UI Framework
 - **React Router 7.13.1** - Client-side routing
 - **Axios 1.13.6** - HTTP client for API calls
-- **Vite 8.0.1** - Fast build tool
+- **Vite 8.0.1** - Build tool & dev server
 - **React Icons 5.6.0** - Icon library
-- **ESLint 9.39.4** - Code quality tool
 
 ### Backend
 - **Node.js + Express 4.21.0** - Server framework
 - **MongoDB 8.5.0** - NoSQL database
 - **Mongoose 8.5.0** - MongoDB object mapper
-- **Groq SDK 0.4.2** - AI inference service
-- **Mixtral-8x7b-32768** - AI model for feedback generation
+- **Groq SDK** - AI inference service
+- **Llama 3.1 8B Instant** - AI model for feedback generation
 
-##  Project Structure
+## 📚 Documentation
+
+| Document | Purpose |
+|----------|---------|
+| [SETUP_GUIDE.md](./SETUP_GUIDE.md) | Quick start (5 minutes) |
+| [PROJECT_DOCUMENTATION.md](./PROJECT_DOCUMENTATION.md) | Technical details & architecture |
+| [QUICK_REFERENCE.md](./QUICK_REFERENCE.md) | Common commands & troubleshooting |
+| [COMPLETION_SUMMARY.md](./COMPLETION_SUMMARY.md) | Project status & next steps |
+
+## 📁 Project Structure
 
 ```
 InterviewAce/
 ├── backend/
-│   ├── index.js              # Server entry point
+│   ├── index.js                    # Server entry point
 │   ├── package.json
-│   ├── seed.js               # Database seeding
+│   ├── seed.js                     # Database seeding
+│   ├── .env                        # Configuration (API key, model, port)
+│   ├── .env.example                # Configuration template
 │   ├── config/
-│   │   └── db.js             # Database configuration
+│   │   └── db.js                   # MongoDB connection
 │   ├── models/
-│   │   ├── Interview.model.js
-│   │   └── Question.model.js
+│   │   ├── Interview.model.js      # Interview session schema
+│   │   └── Question.model.js       # Interview questions schema
 │   ├── routes/
-│   │   ├── feedback.routes.js
-│   │   ├── interview.routes.js
-│   │   └── question.routes.js
+│   │   ├── feedback.routes.js      # AI feedback endpoint
+│   │   ├── interview.routes.js     # Interview session endpoints
+│   │   └── question.routes.js      # Question retrieval endpoints
 │   └── services/
-│       └── groq.service.js   # AI feedback service
+│       └── groq.service.js         # Groq AI integration
 │
+└── frontend/
+    ├── package.json
+    ├── vite.config.js
+    ├── index.html
+    ├── .env                        # Frontend config
+    ├── src/
+    │   ├── App.jsx                 # Main app component
+    │   ├── main.jsx                # Entry point
+    │   ├── components/
+    │   │   └── NavBar.jsx          # Navigation bar
+    │   └── pages/
+    │       ├── Home.jsx            # Landing page
+    │       ├── InterviewSelect.jsx  # Tech stack selection
+    │       ├── Interview.jsx       # Interview interface
+    │       └── Results.jsx         # Results & feedback display
+    └── public/
+```
+
+## 🚀 Quick Start
+
+### Prerequisites
+- **Node.js** (v14+) - [Download](https://nodejs.org)
+- **MongoDB** (v4.0+) - [Download](https://www.mongodb.com/try/download/community)
+- **Groq API Key** (FREE) - [Get here](https://console.groq.com/keys)
+
+### Setup (3 steps)
+
+**1. Configure Environment**
+
+Create `backend/.env`:
+```env
+PORT=5000
+MONGODB_URI=mongodb://localhost:27017/interviewace
+GROQ_API_KEY=your_actual_api_key_here
+GROQ_MODEL=llama-3.1-8b-instant
+```
+
+**2. Start Backend**
+```bash
+cd backend
+npm install
+npm run dev
+```
+
+Expected output:
+```
+Using Groq model: llama-3.1-8b-instant
+MongoDB connected: localhost
+Server running on http://localhost:5000
+```
+
+**3. Start Frontend** (in a new terminal)
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Open **http://localhost:5173** in your browser 🎉
+
+## 📝 Available Commands
+
+### Backend
+```bash
+npm start              # Production mode
+npm run dev            # Development with auto-reload
+npm run seed           # Populate database with sample questions
+```
+
+### Frontend
+```bash
+npm run dev            # Development server
+npm run build          # Production build
+npm run lint           # Code quality check
+```
+
+## 🎯 How It Works
+
+1. **Select Tech Stack** - Choose from 6 different tech stacks
+2. **Answer Questions** - Read and type your answer to interview questions
+3. **Get AI Feedback** - Groq AI analyzes your answer and provides:
+   - Overall score (1-10)
+   - Technical expertise rating
+   - Communication skills rating
+   - Key strengths identified
+   - Areas for improvement
+   - Ideal answer summary
+4. **Review Results** - View all feedback and track your progress
+
+## 🔧 Configuration
+
+### Groq Model
+If you encounter a "decommissioned model" error, update `GROQ_MODEL` in `backend/.env` to one from:
+https://console.groq.com/docs/models
+
+Examples: `llama-3.1-8b-instant`, `mixtral-8x7b-32768`, `llama2-70b-4096`
+
+### Database
+- **Local MongoDB**: Uses `mongodb://localhost:27017/interviewace` by default
+- **MongoDB Atlas**: Update `MONGODB_URI` in `.env` with your connection string
+
+## 📚 Additional Resources
+
+- [Project Documentation](./PROJECT_DOCUMENTATION.md) - Detailed technical documentation
+- Groq API Docs - https://console.groq.com/docs
+- React Docs - https://react.dev
+- Express Docs - https://expressjs.com
+
+## 📄 License
+
+ISC
+
+---
+
+**Questions or issues?** Check PROJECT_DOCUMENTATION.md for more details.
 └── frontend/
     ├── package.json
     ├── vite.config.js

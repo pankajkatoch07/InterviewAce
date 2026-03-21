@@ -4,7 +4,7 @@ import axios from 'axios';
 import { HiOutlineChevronRight, HiOutlineChevronLeft } from 'react-icons/hi';
 import './Interview.css';
 
-const API_BASE = 'http://localhost:8080/api';
+const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:5000/api';
 
 const Interview = () => {
   const { techStack } = useParams();
