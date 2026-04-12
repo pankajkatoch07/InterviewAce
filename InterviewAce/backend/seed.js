@@ -47,8 +47,8 @@ const questions = [
   { question: "Explain code-splitting and lazy loading in React. How do React.lazy and Suspense work?", techStack: "react", difficulty: "medium" },
 
   // JavaScript Questions
-  { question: "Explain closures in JavaScript with a practical example. What are common use cases?", techStack: "javascript", difficulty: "medium" },
   { question: "What is the difference between var, let, and const? Explain hoisting and temporal dead zone.", techStack: "javascript", difficulty: "easy" },
+  { question: "Explain closures in JavaScript with a practical example. What are common use cases?", techStack: "javascript", difficulty: "medium" },
   { question: "Explain Promises, async/await, and the event loop in JavaScript.", techStack: "javascript", difficulty: "medium" },
   { question: "What is prototypal inheritance in JavaScript? How does it differ from classical inheritance?", techStack: "javascript", difficulty: "hard" },
   { question: "Explain the difference between == and ===. How does type coercion work in JavaScript?", techStack: "javascript", difficulty: "easy" },
