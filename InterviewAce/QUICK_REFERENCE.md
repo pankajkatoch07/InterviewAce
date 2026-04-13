@@ -186,4 +186,4 @@ Adds questions for 6 tech stacks:
 
 ---
 
-**InterviewAce is ready for use! 🚀**
+**InterviewAce is ready for use! **
