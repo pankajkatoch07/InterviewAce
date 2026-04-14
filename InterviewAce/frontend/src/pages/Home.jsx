@@ -86,7 +86,7 @@ const Home = () => {
       {/* Footer */}
       <footer className="footer">
         <div className="container">
-          <p>Built with ❤️ using MERN Stack + Groq AI</p>
+          <p>Built by Pankaj Katoch and Anshul Thakur using MERN Stack + Groq AI</p>
         </div>
       </footer>
     </div>
